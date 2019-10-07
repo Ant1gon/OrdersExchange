@@ -40,7 +40,7 @@
     <div id="map" style="font-family: undefined;"></div>
     <script type="text/javascript">
     
-var khmelnickiySectors = L.featureGroup();
+var sectors = L.featureGroup();
 /*var chernigivOrdersSectors = L.featureGroup();
 var chernigivOrders = L.featureGroup();*/
 
@@ -63,10 +63,6 @@ var chernigivOrders = L.featureGroup();*/
             req.onreadystatechange = null;
             if (this.status === 200) {
                 var result = JSON.parse(this.response);
-                console.log(result);
-                $.each(result,function(ra,rb){
-                    console.log("ra = "+ra + "rb = "+rb);
-                });
                 result.value.forEach(function(item, i, arr) {
                     var bounds = [
                         [item.rgc_start_latitude, item.rgc__start_longitude],
@@ -242,14 +238,14 @@ var chernigivOrders = L.featureGroup();*/
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    //map.addLayer(khmelnickiySectors);
+    //map.addLayer(sectors);
     //chernigivOrdersSectors.addLayer(chernigivOrders);
-    //chernigivOrdersSectors.addLayer(khmelnickiySectors);
+    //chernigivOrdersSectors.addLayer(sectors);
 
     /*
     var baseLayers = {
         "Clear Map": map,
-        "Chernigiv Sectors": khmelnickiySectors,
+        "Chernigiv Sectors": sectors,
         //"Chernigiv Orders": chernigivOrders,
         //"Chernigiv Order/Sectors Map": chernigivOrdersSectors,
 
@@ -263,16 +259,17 @@ var chernigivOrders = L.featureGroup();*/
                 {
                     label: 'Chernigiv',
                     children: [
-                        {label: 'Chernigiv Sectors', layer: khmelnickiySectors},
+                        {label: 'Chernigiv Sectors', layer: sectors},
                         //{label: 'Chernigiv Orders', layer: chernigivOrders},
                         //{label: 'Chernigiv Order/Sectors Map', layer: chernigivOrdersSectors},
                     ]       
                 }
             ]
         }   
-    ]
-    */
+    ]    
     L.control.layers.tree(baseTree).addTo(map);
+    */
+
     </script>
 </body>
 
